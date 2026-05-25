@@ -1,0 +1,65 @@
+[
+  {
+    "name": "黒猫パッケージ チロルチョコ",
+    "price": "¥2,400",
+    "image": "img/goods/booth_7952502.jpg",
+    "link": "https://kuro-neko96ko-bo.booth.pm/items/7952502",
+    "store": "BOOTH"
+  },
+  {
+    "name": "黒猫FANBOX_缶バッジC",
+    "price": "¥880",
+    "image": "img/goods/booth_4496185.jpg",
+    "link": "https://kuro-neko96ko-bo.booth.pm/items/4496185",
+    "store": "BOOTH"
+  },
+  {
+    "name": "黒猫FANBOX_缶バッジB",
+    "price": "¥880",
+    "image": "img/goods/booth_4496181.jpg",
+    "link": "https://kuro-neko96ko-bo.booth.pm/items/4496181",
+    "store": "BOOTH"
+  },
+  {
+    "name": "黒猫FANBOX_缶バッジA",
+    "price": "¥880",
+    "image": "img/goods/booth_4496167.jpg",
+    "link": "https://kuro-neko96ko-bo.booth.pm/items/4496167",
+    "store": "BOOTH"
+  },
+  {
+    "name": "黒猫　宇宙猫ver.",
+    "price": "¥4,158",
+    "image": "img/goods/suzuri_1.jpg",
+    "link": "https://suzuri.jp/kuroneko-project/18536846/t-shirt/m/heatherblack",
+    "store": "SUZURI"
+  },
+  {
+    "name": "黒猫　読書ver.",
+    "price": "¥4,158",
+    "image": "img/goods/suzuri_2.jpg",
+    "link": "https://suzuri.jp/kuroneko-project/18790620/t-shirt/s/black",
+    "store": "SUZURI"
+  },
+  {
+    "name": "黒猫白ロゴ",
+    "price": "¥4,158",
+    "image": "img/goods/suzuri_3.jpg",
+    "link": "https://suzuri.jp/kuroneko-project/16456151/t-shirt/m/black",
+    "store": "SUZURI"
+  },
+  {
+    "name": "黒猫　読書ver.",
+    "price": "¥1,439",
+    "image": "img/goods/suzuri_4.jpg",
+    "link": "https://suzuri.jp/kuroneko-project/18790620/acrylic-keychain/50x50mm/clear",
+    "store": "SUZURI"
+  },
+  {
+    "name": "黒猫　宇宙猫ver.",
+    "price": "¥1,439",
+    "image": "img/goods/suzuri_5.jpg",
+    "link": "https://suzuri.jp/kuroneko-project/18536846/acrylic-keychain/50x50mm/clear",
+    "store": "SUZURI"
+  }
+]

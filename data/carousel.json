@@ -1,0 +1,24 @@
+{
+  "slides": [
+    {
+      "image": "img/hero/slide1.png",
+      "alt": "黒猫千鶴 メインビジュアル",
+      "link": null,
+      "hasLink": false
+    },
+    {
+      "image": "img/hero/slide2.png",
+      "alt": "黒猫千鶴 Note",
+      "link": "https://note.com/kuroneko_koubo",
+      "hasLink": true
+    },
+    {
+      "image": "img/hero/slide3.png",
+      "alt": "黒猫千鶴 Amazon Kindle",
+      "link": "https://www.amazon.co.jp/dp/B0DSKQD5KC?&linkCode=sl2&tag=tsubuneko22-22&linkId=4d84d18451ff99678ac9cf3af6331773&language=ja_JP&ref_=as_li_ss_tl",
+      "hasLink": true
+    }
+  ],
+  "autoplay": true,
+  "interval": 5000
+}

@@ -1,0 +1,17 @@
+基本情報	リンク先
+BOOTH	https://kuro-neko96ko-bo.booth.pm/
+Note	https://note.com/kuroneko_koubo
+マシュマロ	https://marshmallow-qa.com/hio3j01l4s5czmo?t=zMPbe8&utm_medium=url_text&utm_source=promotion
+Yotune	https://youtube.com/@96nekoko-bo?si=D9HPI5OW4wzFbVo
+アドレス	9kuro6neko.kobo@gmail.com
+SUZURI	https://suzuri.jp/kuroneko-project 
+AMAZON https://www.amazon.co.jp/dp/B0DSKQD5KC?&linkCode=sl2&tag=tsubuneko22-22&linkId=4d84d18451ff99678ac9cf3af6331773&language=ja_JP&ref_=as_li_ss_tl
+X https://x.com/kuro9neko6
+
+項目の仕様について	
+HERO	カルーセルで３つ画像が設定できるようにしたい（画像を押すとリンクへ飛ぶようにできるものと、できないものを作成）　ユーザーが任意に変えられるようにしたい。AMAZONへのリンクを１つ貼り付けたい。
+GOODS	BOOTH、SUZURIから更新があれば最新のものがサムネイル取得。クリックすると各BOOTH等のリンクへ直リンクする。
+ギャラリー	サムネイルをクリックすると大きなポップアップが開きビューが見える。最新のものから並べる。　Viewmoreを押すとギャラリー独立ページへ。
+Novel	ワードプレス等で随時追加できるようにしたい。
+Note	HEROのカルーセルの１つからリンクが飛ぶように
+Mail	メールのPOPアップが開く

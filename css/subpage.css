@@ -1,0 +1,161 @@
+/* ========================================
+   Subpage Common
+   ======================================== */
+.subpage-hero {
+  background-color: var(--color-accent-bg);
+  padding: 60px 0 40px;
+}
+
+.subpage-hero .section-inner {
+  padding-top: var(--header-height);
+}
+
+/* ========================================
+   Works Page
+   ======================================== */
+.works-page .works-list {
+  max-width: var(--content-width);
+}
+
+/* ========================================
+   Goods Page
+   ======================================== */
+.goods-page .goods-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+}
+
+/* ========================================
+   YouTube Page
+   ======================================== */
+.youtube-page .youtube-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+}
+
+/* ========================================
+   Gallery Page
+   ======================================== */
+.gallery-page .gallery-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* ========================================
+   Novel Page
+   ======================================== */
+.novel-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 2;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.novel-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.novel-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  transition: box-shadow var(--transition-fast);
+}
+
+.novel-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.novel-card-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.novel-card-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.novel-card-excerpt {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: 1.8;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.novel-card-read-more {
+  display: inline-block;
+  margin-top: var(--spacing-md);
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.novel-card-read-more:hover {
+  text-decoration: underline;
+}
+
+/* Novel Detail */
+.novel-detail {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.novel-detail-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.novel-detail-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.novel-detail-body {
+  line-height: 2.2;
+  font-size: var(--font-size-base);
+}
+
+.novel-detail-body p {
+  margin-bottom: var(--spacing-lg);
+  text-indent: 1em;
+}
+
+/* ========================================
+   Responsive - Subpage
+   ======================================== */
+@media (max-width: 1024px) {
+  .gallery-page .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .goods-page .goods-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .youtube-page .youtube-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-page .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .novel-card {
+    padding: var(--spacing-lg);
+  }
+}

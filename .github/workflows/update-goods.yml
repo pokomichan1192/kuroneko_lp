@@ -1,0 +1,142 @@
+name: Update GOODS Data
+
+on:
+  schedule:
+    # 毎日朝9時（日本時間）に実行 = UTC 0:00
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # 手動実行も可能
+
+jobs:
+  update-goods:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch BOOTH data
+        run: |
+          curl -s -L \
+            -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            "https://kuro-neko96ko-bo.booth.pm/" > /tmp/booth_goods.html
+          echo "BOOTH HTML size: $(wc -c < /tmp/booth_goods.html) bytes"
+
+      - name: Fetch SUZURI data
+        run: |
+          curl -s -L \
+            -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            "https://suzuri.jp/kuroneko-project" > /tmp/suzuri_goods.html
+          echo "SUZURI HTML size: $(wc -c < /tmp/suzuri_goods.html) bytes"
+
+      - name: Extract product data
+        run: |
+          python3 << 'PYEOF' > /tmp/goods_result.json
+          import re, json, html as htmlmod
+
+          items = []
+          seen_ids = set()
+          downloads = []
+
+          # --- BOOTH ---
+          with open('/tmp/booth_goods.html', 'r') as f:
+              booth = htmlmod.unescape(f.read())
+
+          booth_pattern = r'"product_id":(\d+),"product_name":"([^"]+)","product_price":(\d+)'
+          booth_matches = re.findall(booth_pattern, booth)
+          booth_thumbs = re.findall(r'"thumbnail_image_urls":\["(https://booth\.pximg\.net/c/300x300[^"]+)"', booth)
+          booth_urls = re.findall(r'"shop_item_url":"(https://kuro-neko96ko-bo\.booth\.pm/items/\d+)"', booth)
+
+          for i, m in enumerate(booth_matches):
+              pid, name, price = m
+              if pid in seen_ids: continue
+              seen_ids.add(pid)
+              img_url = booth_thumbs[i] if i < len(booth_thumbs) else ''
+              local_img = f'booth_{pid}.jpg'
+              if img_url:
+                  downloads.append({'url': img_url, 'file': local_img})
+              items.append({
+                  'name': name,
+                  'price': '¥' + f'{int(price):,}',
+                  'image': f'img/goods/{local_img}',
+                  'link': booth_urls[i] if i < len(booth_urls) else '',
+                  'store': 'BOOTH'
+              })
+
+          # --- SUZURI ---
+          with open('/tmp/suzuri_goods.html', 'r') as f:
+              suzuri = htmlmod.unescape(f.read())
+
+          blocks = suzuri.split('"@type":"Product"')
+          suzuri_idx = 0
+          for block in blocks[1:]:
+              snippet = block[:1200]
+              name_m = re.search(r'"name":"([^"]+)"', snippet)
+              price_m = re.search(r'"price":"?(\d+)', snippet)
+              url_m = re.search(r'"url":"(https://suzuri\.jp/[^"]+)"', snippet)
+              image_m = re.search(r'"image":"(https://lens\.suzuri\.jp/[^"]+)"', snippet)
+
+              if name_m and image_m:
+                  suzuri_idx += 1
+                  img_url = image_m.group(1).replace('\\u0026', '&')
+                  local_img = f'suzuri_{suzuri_idx}.jpg'
+                  downloads.append({'url': img_url, 'file': local_img})
+                  items.append({
+                      'name': name_m.group(1),
+                      'price': '¥' + f'{int(price_m.group(1)):,}' if price_m else '',
+                      'image': f'img/goods/{local_img}',
+                      'link': url_m.group(1) if url_m else '',
+                      'store': 'SUZURI'
+                  })
+
+          print(json.dumps({'items': items, 'downloads': downloads}, ensure_ascii=False))
+          PYEOF
+          echo "Products found: $(python3 -c "import json; d=json.load(open('/tmp/goods_result.json')); print(len(d['items']))")"
+
+      - name: Download images
+        run: |
+          mkdir -p img/goods
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+          python3 -c "
+          import json
+          with open('/tmp/goods_result.json') as f:
+              data = json.load(f)
+          for d in data['downloads']:
+              print(d['url'] + '|||' + d['file'])
+          " | while IFS='|||' read -r url file; do
+            code=$(curl -s -o "img/goods/$file" -w "%{http_code}" -A "$UA" "$url")
+            size=$(stat -c%s "img/goods/$file" 2>/dev/null || echo 0)
+            if [ "$code" = "200" ] && [ "$size" -gt 500 ]; then
+              echo "OK: $file (${size}B)"
+            else
+              echo "NG: $file (HTTP $code)"
+            fi
+          done
+
+      - name: Update goods.json
+        run: |
+          python3 -c "
+          import json
+          with open('/tmp/goods_result.json') as f:
+              data = json.load(f)
+          with open('data/goods.json', 'w') as f:
+              json.dump(data['items'], f, ensure_ascii=False, indent=2)
+          print(f'Saved {len(data[\"items\"])} items')
+          "
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/goods.json img/goods/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "auto: update GOODS data ($(date +%Y-%m-%d))"
+            git push
+          fi

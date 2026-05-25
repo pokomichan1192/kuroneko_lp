@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVEL - 黒猫千鶴</title>
+  <meta name="description" content="黒猫千鶴の小説・テキスト作品。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/subpage.css">
+</head>
+<body class="novel-page">
+  <header class="site-header"></header>
+
+  <section class="section">
+    <div class="section-inner">
+      <div>
+        <h2 class="section-title">
+          <span class="first-letter">N</span>OVEL
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="novel-list" id="novel-list">
+        <!-- novel-loader.jsで動的生成 -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer"></footer>
+
+  <script src="js/common.js"></script>
+  <script>
+    // Novel データ読み込み（Phase 1: JSONベース、Phase 2: WordPress REST API に差し替え）
+    document.addEventListener('DOMContentLoaded', function () {
+      fetch('data/novels.json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          var container = document.getElementById('novel-list');
+          if (!container) return;
+
+          container.innerHTML = data.map(function (item) {
+            return '<article class="novel-card">' +
+              '<h3 class="novel-card-title">' + escapeHtml(item.title) + '</h3>' +
+              '<p class="novel-card-date">' + escapeHtml(item.date) + '</p>' +
+              '<p class="novel-card-excerpt">' + escapeHtml(item.excerpt) + '</p>' +
+              (item.link ? '<a href="' + escapeHtml(item.link) + '" class="novel-card-read-more">続きを読む →</a>' : '') +
+            '</article>';
+          }).join('');
+        })
+        .catch(function (err) {
+          console.error('Novel データの読み込みに失敗:', err);
+        });
+    });
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

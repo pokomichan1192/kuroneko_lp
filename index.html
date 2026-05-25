@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黒猫千鶴 - KURONEKO CHIZURU Official</title>
+  <meta name="description" content="黒猫千鶴（くろねこちづる）の公式サイト。元気いっぱい！癒しと笑顔をお届けする黒猫系VTuber。">
+  <meta property="og:title" content="黒猫千鶴 - KURONEKO CHIZURU Official">
+  <meta property="og:description" content="元気いっぱい！癒しと笑顔をお届けする黒猫系VTuber">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <!-- ========== Header ========== -->
+  <header class="site-header"></header>
+
+  <!-- ========== Hero Section ========== -->
+  <section class="hero-section">
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <!-- スライドはcarousel.jsで動的生成 -->
+      </div>
+      <button class="carousel-btn carousel-btn-prev" aria-label="前のスライド">&#8249;</button>
+      <button class="carousel-btn carousel-btn-next" aria-label="次のスライド">&#8250;</button>
+    </div>
+    <!-- 白い波形帯 + ドット -->
+    <div class="hero-bottom-overlay">
+      <svg class="hero-bottom-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,80 L0,40 C320,0 560,0 720,0 C880,0 1120,0 1440,40 L1440,80 Z" fill="#FFFFFF"/>
+      </svg>
+      <div class="carousel-dots"></div>
+    </div>
+  </section>
+
+  <!-- ========== Topics Section ========== -->
+  <section id="topics" class="section topics-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span class="first-letter">T</span>OPICS <img src="img/decorations/paw-black.svg" alt="" class="section-title-paw">
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        <a href="https://x.com/kuro9neko6" target="_blank" rel="noopener noreferrer" class="btn-view-all">VIEW ALL <img src="img/decorations/viewall-icon.png" alt="" class="btn-view-all-icon"></a>
+      </div>
+      <div class="topics-embed">
+        <!-- 個別ツイート埋め込み: 表示を変えたい場合はblockquote全体を差し替えてください -->
+        <blockquote class="twitter-tweet" data-lang="ja" data-width="500" data-conversation="none"><p lang="ja" dir="ltr">【実績更新】いろんなことがあって更新。<br>業歴11年目。業務実績の一部を公開。シナリオ・フレーバーテキスト作成、演出確認など、常駐経験アリ。<br>仕事のご依頼やご相談はDMください。必要あれば業務実績もお送りします。<br>noteやYouTubeもよろしくお願いします！<a href="https://t.co/uaoQ8xiwLq">https://t.co/uaoQ8xiwLq</a><br>更新日241118</p>&mdash; 黒猫千鶴 (@kuro9neko6) <a href="https://twitter.com/kuro9neko6/status/1858504857877114893?ref_src=twsrc%5Etfw">November 18, 2024</a></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Works Section ========== -->
+  <section id="works" class="section works-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span class="first-letter">W</span>ORKS <img src="img/decorations/paw-black.svg" alt="" class="section-title-paw">
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        <a href="works.html" class="btn-view-all">VIEW ALL <img src="img/decorations/viewall-icon.png" alt="" class="btn-view-all-icon"></a>
+      </div>
+      <div class="works-list" data-limit="5">
+        <!-- data-loader.jsで動的生成 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Goods Section ========== -->
+  <section id="goods" class="section goods-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span class="first-letter">G</span>OODS <img src="img/decorations/paw-black.svg" alt="" class="section-title-paw">
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="btn-view-all-dropdown">
+          <button class="btn-view-all">VIEW ALL <img src="img/decorations/viewall-icon.png" alt="" class="btn-view-all-icon"></button>
+          <div class="dropdown-menu">
+            <a href="https://kuro-neko96ko-bo.booth.pm/" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+              <span class="dropdown-store-badge dropdown-store-booth">BOOTH</span>
+            </a>
+            <a href="https://suzuri.jp/kuroneko-project" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+              <span class="dropdown-store-badge dropdown-store-suzuri">SUZURI</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="goods-grid" data-limit="3">
+        <!-- data-loader.jsで動的生成 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== YouTube Section ========== -->
+  <section id="youtube" class="section youtube-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span class="first-letter">Y</span>OUTUBE <img src="img/decorations/paw-black.svg" alt="" class="section-title-paw">
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        <a href="https://youtube.com/@96nekoko-bo" target="_blank" rel="noopener noreferrer" class="btn-view-all">VIEW ALL <img src="img/decorations/viewall-icon.png" alt="" class="btn-view-all-icon"></a>
+      </div>
+      <div class="youtube-grid" data-limit="2">
+        <!-- data-loader.jsで動的生成 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Gallery Section ========== -->
+  <section id="gallery" class="section gallery-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span class="first-letter">G</span>ALLERY <img src="img/decorations/paw-black.svg" alt="" class="section-title-paw">
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+        <a href="gallery.html" class="btn-view-all">VIEW ALL <img src="img/decorations/viewall-icon.png" alt="" class="btn-view-all-icon"></a>
+      </div>
+      <div class="gallery-grid" data-limit="10">
+        <!-- data-loader.jsで動的生成 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Contact Section ========== -->
+  <section id="contact" class="section contact-section">
+    <div class="section-inner">
+      <div>
+        <h2 class="section-title">
+          <span class="first-letter">C</span>ONTACT <img src="img/decorations/paw-black.svg" alt="" class="section-title-paw">
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-icons">
+        <!-- X (Twitter): 黒丸 + 白Xロゴ -->
+        <div class="contact-icon-item">
+          <a href="https://x.com/kuro9neko6" target="_blank" rel="noopener noreferrer" class="contact-icon-link contact-icon--x">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#FFFFFF"/></svg>
+          </a>
+          <span class="contact-icon-label">X (Twitter)</span>
+        </div>
+        <!-- マシュマロ: ピンク丸 + アイコン画像 -->
+        <div class="contact-icon-item">
+          <a href="https://marshmallow-qa.com/hio3j01l4s5czmo" target="_blank" rel="noopener noreferrer" class="contact-icon-link contact-icon--marshmallow">
+            <img src="img/icons/marshumallow.png" alt="マシュマロ">
+          </a>
+          <span class="contact-icon-label">マシュマロ</span>
+        </div>
+        <!-- YouTube: 赤丸 + 白再生ボタン -->
+        <div class="contact-icon-item">
+          <a href="https://youtube.com/@96nekoko-bo" target="_blank" rel="noopener noreferrer" class="contact-icon-link contact-icon--youtube">
+            <svg viewBox="0 0 24 24"><polygon points="9.5,7 9.5,17 17,12" fill="#FFFFFF"/></svg>
+          </a>
+          <span class="contact-icon-label">YouTube</span>
+        </div>
+        <!-- Mail: 白丸 + 黒封筒 -->
+        <div class="contact-icon-item">
+          <a href="#" data-mail-popup class="contact-icon-link contact-icon--mail">
+            <svg viewBox="0 0 24 24"><path d="M2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6z" fill="#1A1A1A"/><path d="M2 6l10 7 10-7" stroke="#FFFFFF" stroke-width="1.5" fill="none"/></svg>
+          </a>
+          <span class="contact-icon-label">Mail</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="site-footer"></footer>
+
+  <!-- ========== Gallery Modal ========== -->
+  <div id="gallery-modal" class="modal-overlay gallery-modal">
+    <button class="modal-close" aria-label="閉じる">&times;</button>
+    <button class="gallery-modal-nav gallery-modal-prev" aria-label="前の画像">&#8249;</button>
+    <img class="gallery-modal-image" src="" alt="">
+    <button class="gallery-modal-nav gallery-modal-next" aria-label="次の画像">&#8250;</button>
+  </div>
+
+  <!-- ========== Mail Modal ========== -->
+  <div id="mail-modal" class="modal-overlay">
+    <button class="modal-close" aria-label="閉じる">&times;</button>
+    <div class="mail-popup">
+      <h3>📧 Mail</h3>
+      <p class="mail-popup-address">9kuro6neko.kobo@gmail.com</p>
+      <div class="mail-popup-actions">
+        <a href="mailto:9kuro6neko.kobo@gmail.com" class="mail-popup-btn mail-popup-btn-send">メールを送る</a>
+        <button class="mail-popup-btn mail-popup-btn-copy">コピー</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/common.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/youtube-loader.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/mail-popup.js"></script>
+  <script src="js/decorations.js"></script>
+
+  <!-- Twitter Widget (Topics用) -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

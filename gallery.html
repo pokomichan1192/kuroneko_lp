@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GALLERY - 黒猫千鶴</title>
+  <meta name="description" content="黒猫千鶴のギャラリー。イラスト・ゲーム・テキスト作品一覧。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/subpage.css">
+</head>
+<body class="gallery-page">
+  <header class="site-header"></header>
+
+  <section class="section">
+    <div class="section-inner">
+      <div>
+        <h2 class="section-title">
+          <span class="first-letter">G</span>ALLERY
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="gallery-grid">
+        <!-- 全件表示 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Modal -->
+  <div id="gallery-modal" class="modal-overlay gallery-modal">
+    <button class="modal-close" aria-label="閉じる">&times;</button>
+    <button class="gallery-modal-nav gallery-modal-prev" aria-label="前の画像">&#8249;</button>
+    <img class="gallery-modal-image" src="" alt="">
+    <button class="gallery-modal-nav gallery-modal-next" aria-label="次の画像">&#8250;</button>
+  </div>
+
+  <footer class="site-footer"></footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>
