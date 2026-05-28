@@ -33,7 +33,6 @@
 
   <script src="js/common.js"></script>
   <script>
-    // Novel データ読み込み（Phase 1: JSONベース、Phase 2: WordPress REST API に差し替え）
     document.addEventListener('DOMContentLoaded', function () {
       fetch('data/novels.json')
         .then(function (res) { return res.json(); })
@@ -42,12 +41,10 @@
           if (!container) return;
 
           container.innerHTML = data.map(function (item) {
-            return '<article class="novel-card">' +
-              '<h3 class="novel-card-title">' + escapeHtml(item.title) + '</h3>' +
-              '<p class="novel-card-date">' + escapeHtml(item.date) + '</p>' +
-              '<p class="novel-card-excerpt">' + escapeHtml(item.excerpt) + '</p>' +
-              (item.link ? '<a href="' + escapeHtml(item.link) + '" class="novel-card-read-more">続きを読む →</a>' : '') +
-            '</article>';
+            return '<a href="' + escapeHtml(item.link) + '" target="_blank" rel="noopener noreferrer" class="novel-link-item">' +
+              '<span class="novel-link-title">' + escapeHtml(item.title) + '</span>' +
+              '<span class="novel-link-arrow">→</span>' +
+            '</a>';
           }).join('');
         })
         .catch(function (err) {

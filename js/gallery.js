@@ -23,9 +23,20 @@ function initGalleryModal() {
     var item = e.target.closest('.gallery-item');
     if (!item) return;
 
-    // 現在のギャラリーアイテムを取得
-    galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-    currentIndex = parseInt(item.dataset.index) || galleryItems.indexOf(item);
+    // Coming Soonはクリック無効
+    if (item.classList.contains('gallery-item--disabled')) return;
+
+    // リンク付きアイテムはページ遷移
+    var link = item.dataset.link;
+    if (link) {
+      window.location.href = link;
+      return;
+    }
+
+    // 通常のポップアップ表示（Coming Soon以外のみ対象）
+    galleryItems = Array.from(document.querySelectorAll('.gallery-item:not(.gallery-item--disabled)'));
+    currentIndex = galleryItems.indexOf(item);
+    if (currentIndex === -1) return;
 
     openModal();
   });

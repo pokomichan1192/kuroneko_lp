@@ -70,6 +70,41 @@
   box-shadow: var(--shadow-md);
 }
 
+/* Novel Link List */
+.novel-link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+  color: var(--color-text);
+}
+
+.novel-link-item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.novel-link-item:hover {
+  background-color: var(--color-accent-bg);
+}
+
+.novel-link-title {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+.novel-link-item:hover .novel-link-title {
+  color: var(--color-accent);
+}
+
+.novel-link-arrow {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  flex-shrink: 0;
+  margin-left: var(--spacing-md);
+}
+
 .novel-card-title {
   font-size: var(--font-size-xl);
   font-weight: 700;

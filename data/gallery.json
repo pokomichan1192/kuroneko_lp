@@ -1,12 +1,12 @@
 [
   { "image": "img/gallery/illust1.png", "label": "イラスト1", "category": "illust" },
   { "image": "img/gallery/illust2.png", "label": "イラスト2", "category": "illust" },
-  { "image": "img/gallery/illust3.png", "label": "イラスト3", "category": "illust" },
-  { "image": "img/gallery/game1.png", "label": "GAME1", "category": "game" },
-  { "image": "img/gallery/game2.png", "label": "GAME2", "category": "game" },
-  { "image": "img/gallery/text1.png", "label": "TEXT1", "category": "text" },
-  { "image": "img/gallery/text2.png", "label": "TEXT2", "category": "text" },
-  { "image": "img/gallery/text3.png", "label": "TEXT3", "category": "text" },
-  { "image": "img/gallery/text4.png", "label": "TEXT4", "category": "text" },
-  { "image": "img/gallery/text5.png", "label": "TEXT5", "category": "text" }
+  { "image": "img/gallery/coming-soon.png", "label": "イラスト3", "category": "illust" },
+  { "image": "img/gallery/coming-soon.png", "label": "GAME1", "category": "game" },
+  { "image": "img/gallery/coming-soon.png", "label": "GAME2", "category": "game" },
+  { "image": "img/gallery/text1.png", "label": "TEXT1", "category": "text", "link": "novel.html" },
+  { "image": "img/gallery/coming-soon.png", "label": "TEXT2", "category": "text" },
+  { "image": "img/gallery/coming-soon.png", "label": "TEXT3", "category": "text" },
+  { "image": "img/gallery/coming-soon.png", "label": "TEXT4", "category": "text" },
+  { "image": "img/gallery/coming-soon.png", "label": "TEXT5", "category": "text" }
 ]

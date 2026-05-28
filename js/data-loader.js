@@ -136,11 +136,15 @@ function loadGallery() {
 
 function renderGallery(container, items) {
   container.innerHTML = items.map(function (item, index) {
-    return '<div class="gallery-item" data-index="' + index + '">' +
+    var isComingSoon = item.image.indexOf('coming-soon') !== -1;
+    var hasLink = item.link ? true : false;
+    var classes = 'gallery-item' + (isComingSoon ? ' gallery-item--disabled' : '');
+    var dataAttrs = hasLink ? ' data-link="' + escapeHtml(item.link) + '"' : ' data-index="' + index + '"';
+
+    return '<div class="' + classes + '"' + dataAttrs + '>' +
       '<div class="gallery-item-image">' +
         '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.label) + '" loading="lazy">' +
       '</div>' +
-      '<p class="gallery-item-label">' + escapeHtml(item.label) + '</p>' +
     '</div>';
   }).join('');
 }

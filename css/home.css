@@ -542,6 +542,15 @@
   text-align: center;
 }
 
+.gallery-item--disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.gallery-item--disabled:hover .gallery-item-image img {
+  transform: none;
+}
+
 /* Gallery Modal */
 .gallery-modal {
   z-index: 200;

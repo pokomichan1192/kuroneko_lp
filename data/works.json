@@ -1,27 +1,52 @@
 [
   {
-    "category": "実況",
-    "title": "ソーシャルゲーム『〇〇〇〇〇〇〇』ライブ配信",
-    "date": "2025.05.03"
+    "category": "ゲーム",
+    "title": "M社　案件公開不可　プランナー業務",
+    "date": "2512-2603"
   },
   {
-    "category": "企画",
-    "title": "企画『〇〇〇〇〇〇〇〇』",
-    "date": "2024.10.10"
+    "category": "Vtuber",
+    "title": "LINEスタンプ 第1弾 販売",
+    "date": "2512"
+  },
+  {
+    "category": "ゲーム",
+    "title": "M社　案件公開不可　シナリオ業務",
+    "date": "2402-2505"
+  },
+  {
+    "category": "ゲーム",
+    "title": "C社　案件公開不可　シナリオ業務",
+    "date": "2406-2505"
+  },
+  {
+    "category": "ゲーム",
+    "title": "M社　タワーオブスカイ　SNS担当、シナリオ業務",
+    "date": "2210-2401"
+  },
+  {
+    "category": "ゲーム",
+    "title": "D社　サモンナイト6 失われた境界たち　シナリオ業務",
+    "date": "外注"
+  },
+  {
+    "category": "ゲーム",
+    "title": "F社　案件公開不可　シナリオ業務",
+    "date": "外注"
   },
   {
     "category": "YouTube",
-    "title": "YouTube『〇〇〇〇〇〇〇』実況動画",
-    "date": "2024.07.19"
+    "title": "絵本動画 第6弾「うみのむこうがわ」",
+    "date": "2501"
   },
   {
-    "category": "YouTube",
-    "title": "YouTube『〇〇〇〇〇〇〇』練習動画",
-    "date": "2024.05.27"
+    "category": "受賞",
+    "title": "第10回北のシナリオ大賞（提供：三角山放送局様）ラジオドラマ台本　優秀賞",
+    "date": ""
   },
   {
-    "category": "YouTube",
-    "title": "YouTube『〇〇〇〇〇〇〇』歌ってみた",
-    "date": "2024.02.07"
+    "category": "受賞",
+    "title": "第2回お題チャレンジ（提供：comico様）ノベル　準優秀賞",
+    "date": ""
   }
 ]
