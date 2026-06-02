@@ -22,12 +22,15 @@ curl -s -L -A "$UA" "https://suzuri.jp/kuroneko-project" > /tmp/suzuri_goods.htm
 echo "商品データを抽出中..."
 
 # PythonでデータとURLリストを抽出、画像ダウンロードはcurlで行う
+# BOOTH: 個別ページのJSON APIからpublished_atを取得
+# SUZURI: 個別ページのHTMLからpublishedAtを取得
 python3 << 'PYEOF' > /tmp/goods_result.json
 import re, json, html as htmlmod
 
 items = []
 seen_ids = set()
 downloads = []  # {"url": ..., "file": ...}
+date_fetch = []  # {"store": ..., "url": ..., "index": ...} 日付取得用
 
 # --- BOOTH ---
 with open('/tmp/booth_goods.html', 'r') as f:
@@ -46,13 +49,17 @@ for i, m in enumerate(booth_matches):
     local_img = f'booth_{pid}.jpg'
     if img_url:
         downloads.append({'url': img_url, 'file': local_img})
+    idx = len(items)
     items.append({
         'name': name,
         'price': '¥' + f'{int(price):,}',
         'image': f'img/goods/{local_img}',
         'link': booth_urls[i] if i < len(booth_urls) else '',
-        'store': 'BOOTH'
+        'store': 'BOOTH',
+        'published_at': ''
     })
+    # BOOTH JSON APIで日付取得
+    date_fetch.append({'store': 'BOOTH', 'url': f'https://booth.pm/ja/items/{pid}.json', 'index': idx})
 
 # --- SUZURI ---
 with open('/tmp/suzuri_goods.html', 'r') as f:
@@ -72,15 +79,20 @@ for block in blocks[1:]:
         img_url = image_m.group(1).replace('\\u0026', '&')
         local_img = f'suzuri_{suzuri_idx}.jpg'
         downloads.append({'url': img_url, 'file': local_img})
+        idx = len(items)
         items.append({
             'name': name_m.group(1),
             'price': '¥' + f'{int(price_m.group(1)):,}' if price_m else '',
             'image': f'img/goods/{local_img}',
             'link': url_m.group(1) if url_m else '',
-            'store': 'SUZURI'
+            'store': 'SUZURI',
+            'published_at': ''
         })
+        # SUZURI個別ページで日付取得
+        if url_m:
+            date_fetch.append({'store': 'SUZURI', 'url': url_m.group(1), 'index': idx})
 
-print(json.dumps({'items': items, 'downloads': downloads}, ensure_ascii=False))
+print(json.dumps({'items': items, 'downloads': downloads, 'date_fetch': date_fetch}, ensure_ascii=False))
 PYEOF
 
 # JSONからダウンロードリストを取得してcurlで画像をダウンロード
@@ -91,8 +103,8 @@ import json, sys
 with open('/tmp/goods_result.json') as f:
     data = json.load(f)
 for d in data['downloads']:
-    print(d['url'] + '|||' + d['file'])
-" | while IFS='|||' read -r url file; do
+    print(d['url'] + '\t' + d['file'])
+" | while IFS=$'\t' read -r url file; do
     filepath="$IMG_DIR/$file"
     code=$(curl -s -o "$filepath" -w "%{http_code}" -A "$UA" "$url")
     size=$(stat -f%z "$filepath" 2>/dev/null || echo 0)
@@ -104,17 +116,74 @@ for d in data['downloads']:
     fi
 done
 
-# goods.json を保存
+# 日付を取得してgoods_result.jsonを更新
+echo ""
+echo "公開日を取得中..."
 python3 -c "
 import json
 with open('/tmp/goods_result.json') as f:
     data = json.load(f)
-with open('$OUTPUT', 'w') as f:
-    json.dump(data['items'], f, ensure_ascii=False, indent=2)
-print()
-print(f'=== 合計 {len(data[\"items\"])}件 保存完了 ===')
+for d in data.get('date_fetch', []):
+    print(d['store'] + '\t' + d['url'] + '\t' + str(d['index']))
+" | while IFS=$'\t' read -r store url idx; do
+    if [ "$store" = "BOOTH" ]; then
+        # BOOTH: JSON APIからpublished_atを取得
+        pub=$(curl -s -L -A "$UA" -H "Accept: application/json" "$url" | python3 -c "
+import sys, json
+try:
+    d = json.load(sys.stdin)
+    print(d.get('published_at', ''))
+except: print('')
+" 2>/dev/null)
+    else
+        # SUZURI: 個別ページHTMLからpublishedAtを取得
+        pub=$(curl -s -L -A "$UA" "$url" | python3 -c "
+import sys, re, html as htmlmod
+content = htmlmod.unescape(sys.stdin.read())
+m = re.search(r'\"publishedAt\":\"([^\"]+)\"', content)
+print(m.group(1) if m else '')
+" 2>/dev/null)
+    fi
+    printf '%s\t%s\n' "$idx" "$pub"
+done > /tmp/goods_dates.txt
+
+# 日付をマージしてソート、goods.jsonを保存
+python3 -c "
+import json
+
+with open('/tmp/goods_result.json') as f:
+    data = json.load(f)
+
+# 日付をアイテムにマージ
+try:
+    with open('/tmp/goods_dates.txt') as f:
+        for line in f:
+            line = line.strip()
+            if '\t' not in line: continue
+            idx_str, pub = line.split('\t', 1)
+            idx = int(idx_str)
+            if idx < len(data['items']):
+                data['items'][idx]['published_at'] = pub
+except FileNotFoundError:
+    pass
+
+# 公開日の新しい順にソート（日付なしは末尾）
+data['items'].sort(key=lambda x: x.get('published_at', '') or '0000', reverse=True)
+
+# published_atを除外して保存
+output_items = []
 for item in data['items']:
-    print(f'  [{item[\"store\"]}] {item[\"name\"]} - {item[\"price\"]}')
+    out = {k: v for k, v in item.items() if k != 'published_at'}
+    output_items.append(out)
+
+with open('$OUTPUT', 'w') as f:
+    json.dump(output_items, f, ensure_ascii=False, indent=2)
+
+print()
+print(f'=== 合計 {len(data[\"items\"])}件 保存完了（公開日の新しい順） ===')
+for item in data['items']:
+    pub = item.get('published_at', '')[:10] or '不明'
+    print(f'  [{item[\"store\"]}] {item[\"name\"]} - {item[\"price\"]} ({pub})')
 "
 
 rm -f /tmp/booth_goods.html /tmp/suzuri_goods.html /tmp/goods_result.json

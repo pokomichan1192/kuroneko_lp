@@ -233,7 +233,15 @@
 
 .topics-embed {
   width: 100%;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
   text-align: center;
+}
+
+.topics-tweet-wrapper {
+  flex: 0 1 550px;
+  min-width: 0;
 }
 
 .topics-embed > * {
@@ -657,6 +665,11 @@
   background-color: #FF0000;
 }
 
+/* Instagram: グラデーション丸 + 白カメラアイコン */
+.contact-icon--instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
 /* Mail: 白丸 + 黒封筒 */
 .contact-icon--mail {
   background-color: var(--color-white);
@@ -776,6 +789,11 @@
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topics-embed {
+    flex-direction: column;
+    align-items: center;
   }
 
   .contact-icons {

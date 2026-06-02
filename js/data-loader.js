@@ -3,11 +3,72 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+  loadTopics();
   loadWorks();
   loadGoods();
   // YouTubeはyoutube-loader.jsで処理
   loadGallery();
 });
+
+/* ========================================
+   Topics
+   ======================================== */
+function loadTopics() {
+  var container = document.querySelector('.topics-embed');
+  if (!container) return;
+
+  fetch('data/topics.json')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      renderTopics(container, data);
+    })
+    .catch(function (err) {
+      console.error('Topics データの読み込みに失敗:', err);
+    });
+}
+
+function renderTopics(container, items) {
+  container.innerHTML = '';
+
+  // ツイートURLからIDを抽出
+  function getTweetId(url) {
+    var match = url.match(/status\/(\d+)/);
+    return match ? match[1] : null;
+  }
+
+  function createTweets() {
+    items.forEach(function (item) {
+      var tweetId = getTweetId(item.tweet_url);
+      if (!tweetId) return;
+
+      var wrapper = document.createElement('div');
+      wrapper.className = 'topics-tweet-wrapper';
+      container.appendChild(wrapper);
+
+      twttr.widgets.createTweet(tweetId, wrapper, {
+        lang: 'ja',
+        width: 550,
+        conversation: 'none'
+      });
+    });
+  }
+
+  // twttr.widgets が使えるまで待機
+  if (typeof twttr !== 'undefined' && twttr.widgets) {
+    createTweets();
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts++;
+      if (typeof twttr !== 'undefined' && twttr.widgets) {
+        createTweets();
+        clearInterval(timer);
+      } else if (attempts > 30) {
+        clearInterval(timer);
+      }
+    }, 500);
+  }
+}
 
 /* ========================================
    Works
