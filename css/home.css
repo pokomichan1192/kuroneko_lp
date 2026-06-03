@@ -191,6 +191,7 @@
   display: block;
   width: 100%;
   height: 60px;
+  vertical-align: bottom;
 }
 
 .carousel-dots {
@@ -809,5 +810,82 @@
   .works-date {
     width: 100%;
     text-align: right;
+  }
+
+  .section-header {
+    flex-wrap: wrap;
+  }
+
+  .btn-view-all {
+    margin-left: auto;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+
+  .carousel-btn-prev {
+    left: 10px;
+  }
+
+  .carousel-btn-next {
+    right: 10px;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .carousel-dots {
+    gap: 10px;
+  }
+
+  .works-category {
+    width: auto;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 300px;
+  }
+
+  .carousel-slide {
+    min-width: 85%;
+    max-width: 85%;
+  }
+
+  .carousel-slide-content .hero-title {
+    font-size: 28px;
+  }
+
+  .carousel-slide-content .hero-title-en {
+    font-size: var(--font-size-base);
+  }
+
+  .topics-tweet-wrapper {
+    flex: 0 1 100%;
+    width: 100%;
+  }
+
+  .goods-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-icons {
+    gap: var(--spacing-md);
+  }
+
+  .contact-icon-link {
+    width: 52px;
+    height: 52px;
+  }
+
+  .contact-icon-label {
+    font-size: 11px;
   }
 }

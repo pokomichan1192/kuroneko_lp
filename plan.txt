@@ -7,6 +7,8 @@ Yotune	https://youtube.com/@96nekoko-bo?si=D9HPI5OW4wzFbVo
 SUZURI	https://suzuri.jp/kuroneko-project 
 AMAZON https://www.amazon.co.jp/dp/B0DSKQD5KC?&linkCode=sl2&tag=tsubuneko22-22&linkId=4d84d18451ff99678ac9cf3af6331773&language=ja_JP&ref_=as_li_ss_tl
 X https://x.com/kuro9neko6
+Instagram：https://www.instagram.com/96nek0_cat
+イリアム　https://web.iriam.app/s/user/bVTJvK0qvV?uuid=a126c300
 
 項目の仕様について	
 HERO	カルーセルで３つ画像が設定できるようにしたい（画像を押すとリンクへ飛ぶようにできるものと、できないものを作成）　ユーザーが任意に変えられるようにしたい。AMAZONへのリンクを１つ貼り付けたい。
@@ -15,3 +17,16 @@ GOODS	BOOTH、SUZURIから更新があれば最新のものがサムネイル取
 Novel	ワードプレス等で随時追加できるようにしたい。
 Note	HEROのカルーセルの１つからリンクが飛ぶように
 Mail	メールのPOPアップが開く
+
+
+▼Works
+1.項目：ゲーム　M社　案件公開不可　プランナー業務　2512-2603
+2.項目：Vtuber   LINEスタンプ 第1弾 販売　2512
+3.項目：ゲーム　M社　案件公開不可　シナリオ業務　2402-2505
+4.項目：ゲーム　C社　案件公開不可　シナリオ業務　2406-2505
+5.項目：ゲーム　M社　タワーオブスカイ　SNS担当、シナリオ業務　2210-2401
+6.項目：ゲーム　D社　サモンナイト6 失われた境界たち　シナリオ業務　外注
+7.項目：ゲーム　F社　案件公開不可　シナリオ業務　外注
+8.項目：YouTube　絵本動画 第6弾「うみのむこうがわ」　2501
+9.項目：受賞　第10回北のシナリオ大賞（提供：三角山放送局様）　ラジオドラマ台本　優秀賞
+10.項目：受賞　第2回お題チャレンジ（提供：comico様）ノベル　準優秀賞

@@ -100,13 +100,18 @@ function buildCarousel(container, config) {
     updateUI();
   }
 
+  var isAnimating = false;
+
   function slideTo(idx) {
+    if (isAnimating) return;
+    isAnimating = true;
     // スライド前に真ん中グループから離れすぎていたら静かに戻す
     normalizeQuietly();
     track.style.transition = 'transform 0.5s ease';
     currentIndex = idx;
     track.style.transform = 'translateX(' + getOffset(currentIndex) + 'px)';
     updateUI();
+    setTimeout(function () { isAnimating = false; }, 500);
   }
 
   // 真ん中グループから離れすぎたら静かに戻す

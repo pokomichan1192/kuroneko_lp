@@ -52,6 +52,7 @@ button {
   z-index: 100;
   background-color: var(--color-bg-dark);
   height: var(--header-height);
+  box-shadow: 0 1px 0 0 var(--color-bg-dark);
 }
 
 .header-inner {
@@ -563,5 +564,32 @@ button {
 
   .footer-right {
     text-align: center;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .footer-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-inner {
+    padding: 0 16px;
+  }
+
+  .footer-inner {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-title .first-letter {
+    font-size: 34px;
   }
 }

@@ -193,4 +193,26 @@
   .novel-card {
     padding: var(--spacing-lg);
   }
+
+  .novel-link-item {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-page .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .goods-page .goods-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .novel-link-title {
+    font-size: 14px;
+  }
+
+  .novel-link-arrow {
+    font-size: var(--font-size-base);
+  }
 }
