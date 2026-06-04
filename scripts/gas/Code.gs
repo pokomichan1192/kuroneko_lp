@@ -32,6 +32,7 @@ function publishToSite() {
   var ui = SpreadsheetApp.getUi();
 
   // データ収集
+  var hero = getHeroJson();
   var works = getWorksJson();
   var topics = getTopicsJson();
   var gallery = getGalleryJson();
@@ -39,6 +40,7 @@ function publishToSite() {
 
   // 確認ダイアログ
   var summary = '以下の内容をサイトに反映します:\n\n' +
+    '・HERO: ' + hero.slides.length + '件\n' +
     '・WORKS: ' + works.length + '件\n' +
     '・TOPICS: ' + topics.length + '件\n' +
     '・GALLERY: ' + gallery.items.length + '件\n' +
@@ -61,27 +63,112 @@ function publishToSite() {
 
   // GitHub にプッシュ
   try {
+    pushFileToGitHub('data/carousel.json', JSON.stringify(hero, null, 2), 'update: HERO データ更新');
     pushFileToGitHub('data/works.json', JSON.stringify(works, null, 2), 'update: WORKS データ更新');
     pushFileToGitHub('data/topics.json', JSON.stringify(topics.data, null, 2), 'update: TOPICS データ更新');
     pushFileToGitHub('data/gallery.json', JSON.stringify(gallery.items, null, 2), 'update: GALLERY データ更新');
     pushFileToGitHub('data/novels.json', JSON.stringify(novels, null, 2), 'update: NOVELS データ更新');
 
+    // Hero画像の同期
+    var heroImageResult = syncHeroImages(hero.slides);
     // Gallery画像の同期
     var imageResult = syncGalleryImages(gallery.items);
 
+    var totalUploaded = heroImageResult.uploaded + imageResult.uploaded;
+    var allErrors = heroImageResult.errors.concat(imageResult.errors);
+
     var msg = 'サイトへの反映が完了しました！\n\n' +
       '数分後にサイトに反映されます。';
-    if (imageResult.uploaded > 0) {
-      msg += '\n画像: ' + imageResult.uploaded + '件アップロード';
+    if (totalUploaded > 0) {
+      msg += '\n画像: ' + totalUploaded + '件アップロード';
     }
-    if (imageResult.errors.length > 0) {
-      msg += '\n\n⚠ 画像エラー:\n' + imageResult.errors.join('\n');
+    if (allErrors.length > 0) {
+      msg += '\n\n⚠ 画像エラー:\n' + allErrors.join('\n');
     }
     ui.alert('完了', msg, ui.ButtonSet.OK);
   } catch (e) {
     ui.alert('エラー', 'サイトへの反映に失敗しました:\n' + e.message, ui.ButtonSet.OK);
     Logger.log(e);
   }
+}
+
+// ========================================
+// HERO（カルーセル）
+// ========================================
+
+function getHeroJson() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('HERO');
+  if (!sheet) return { slides: [], autoplay: true, interval: 5000 };
+
+  var data = sheet.getDataRange().getValues();
+  var slides = [];
+
+  // 1行目はヘッダー、2行目からデータ
+  for (var i = 1; i < data.length; i++) {
+    var filename = String(data[i][0]).trim();
+    var alt = String(data[i][1]).trim();
+    var link = String(data[i][2]).trim();
+
+    // 空行スキップ
+    if (!filename) continue;
+
+    slides.push({
+      image: 'img/hero/' + filename,
+      alt: alt || filename,
+      link: link || null,
+      hasLink: link ? true : false
+    });
+  }
+
+  return {
+    slides: slides,
+    autoplay: true,
+    interval: 5000
+  };
+}
+
+// ========================================
+// HERO画像同期（Googleドライブ→GitHub）
+// ========================================
+
+function syncHeroImages(slides) {
+  var result = { uploaded: 0, errors: [] };
+
+  var folderId = PropertiesService.getScriptProperties().getProperty('DRIVE_FOLDER_ID');
+  if (!folderId) return result;
+
+  var folder;
+  try {
+    folder = DriveApp.getFolderById(folderId);
+  } catch (e) {
+    result.errors.push('Googleドライブフォルダにアクセスできません: ' + e.message);
+    return result;
+  }
+
+  for (var i = 0; i < slides.length; i++) {
+    var filename = slides[i].image.replace('img/hero/', '');
+
+    var files = folder.getFilesByName(filename);
+    if (!files.hasNext()) continue;
+
+    var file = files.next();
+    var blob = file.getBlob();
+    var base64Content = Utilities.base64Encode(blob.getBytes());
+
+    try {
+      pushFileToGitHub(
+        'img/hero/' + filename,
+        base64Content,
+        'update: Hero画像更新 - ' + filename,
+        true
+      );
+      result.uploaded++;
+    } catch (e) {
+      result.errors.push(filename + ': ' + e.message);
+    }
+  }
+
+  return result;
 }
 
 // ========================================
