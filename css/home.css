@@ -55,7 +55,7 @@
   background-color: var(--color-accent-bg);
   border-radius: 16px;
   overflow: hidden;
-  margin: 0 1%;
+  margin: 0 8px;
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 0.5;
   transform: scale(0.9);
@@ -857,6 +857,7 @@
   .carousel-slide {
     min-width: 85%;
     max-width: 85%;
+    margin: 0 6px;
   }
 
   .carousel-slide-content .hero-title {

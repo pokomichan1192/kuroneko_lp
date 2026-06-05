@@ -67,19 +67,12 @@ function buildCarousel(container, config) {
   var allSlideEls = track.querySelectorAll('.carousel-slide');
   var autoplayTimer = null;
 
-  function getSlideMetrics() {
-    var slideEl = allSlideEls[0];
-    var style = getComputedStyle(slideEl);
-    var w = slideEl.offsetWidth;
-    var ml = parseInt(style.marginLeft) || 0;
-    var mr = parseInt(style.marginRight) || 0;
-    return { width: w, total: w + ml + mr };
-  }
-
   function getOffset(idx) {
-    var m = getSlideMetrics();
+    var slideEl = allSlideEls[idx] || allSlideEls[0];
     var containerW = container.offsetWidth;
-    return (containerW - m.width) / 2 - idx * m.total;
+    var slideW = slideEl.offsetWidth;
+    var slideLeft = slideEl.offsetLeft;
+    return (containerW - slideW) / 2 - slideLeft;
   }
 
   function updateUI() {
@@ -186,6 +179,7 @@ function buildCarousel(container, config) {
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
   track.addEventListener('touchend', function (e) {
+    if (isAnimating) return;
     var diff = touchStartX - e.changedTouches[0].screenX;
     if (Math.abs(diff) > 50) { diff > 0 ? goNext() : goPrev(); }
   }, { passive: true });
