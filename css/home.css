@@ -297,6 +297,13 @@
   white-space: nowrap;
 }
 
+.works-note {
+  margin-top: var(--spacing-lg);
+  text-align: right;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
 /* ========================================
    Goods Section
    ======================================== */

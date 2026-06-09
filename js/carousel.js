@@ -99,12 +99,17 @@ function buildCarousel(container, config) {
     if (isAnimating) return;
     isAnimating = true;
     // スライド前に真ん中グループから離れすぎていたら静かに戻す
+    var oldIndex = currentIndex;
     normalizeQuietly();
+    // 正規化でcurrentIndexが変わった場合、目標indexも同じ差分だけ調整する
+    idx = idx + (currentIndex - oldIndex);
+    // 正規化のジャンプを確実に描画してからアニメーション開始
+    void track.offsetWidth;
     track.style.transition = 'transform 0.5s ease';
     currentIndex = idx;
     track.style.transform = 'translateX(' + getOffset(currentIndex) + 'px)';
     updateUI();
-    setTimeout(function () { isAnimating = false; }, 500);
+    setTimeout(function () { isAnimating = false; }, 520);
   }
 
   // 真ん中グループから離れすぎたら静かに戻す
@@ -116,8 +121,10 @@ function buildCarousel(container, config) {
     }
   }
 
-  // 初期表示
-  jumpTo(currentIndex);
+  // 初期表示（レイアウト計算完了後に配置）
+  requestAnimationFrame(function () {
+    jumpTo(currentIndex);
+  });
 
   function goNext() {
     slideTo(currentIndex + 1);
