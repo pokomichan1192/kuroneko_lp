@@ -7,6 +7,13 @@
     "store": "SUZURI"
   },
   {
+    "name": "黒猫　箱入りver.",
+    "price": "¥1,564",
+    "image": "img/goods/suzuri_4.jpg",
+    "link": "https://suzuri.jp/kuroneko-project/20415287/acrylic-keychain/50x50mm/clear",
+    "store": "SUZURI"
+  },
+  {
     "name": "黒猫　宇宙猫ver.",
     "price": "¥4,394",
     "image": "img/goods/suzuri_2.jpg",
@@ -23,15 +30,8 @@
   {
     "name": "黒猫　読書ver.",
     "price": "¥842",
-    "image": "img/goods/suzuri_4.jpg",
-    "link": "https://suzuri.jp/kuroneko-project/18790620/sticker/m/white",
-    "store": "SUZURI"
-  },
-  {
-    "name": "黒猫　読書ver.",
-    "price": "¥1,564",
     "image": "img/goods/suzuri_5.jpg",
-    "link": "https://suzuri.jp/kuroneko-project/18790620/acrylic-keychain/50x50mm/clear",
+    "link": "https://suzuri.jp/kuroneko-project/18790620/sticker/m/white",
     "store": "SUZURI"
   },
   {
