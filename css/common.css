@@ -230,10 +230,11 @@ button {
   font-size: var(--font-size-section-title);
   font-weight: 700;
   color: var(--color-primary);
+  line-height: 1.2;
   margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 0;
 }
 
 .section-title .first-letter {
@@ -289,7 +290,7 @@ button {
   width: 24px;
   height: 24px;
   vertical-align: middle;
-  margin-left: 4px;
+  margin-left: 12px;
 }
 
 /* ========================================
