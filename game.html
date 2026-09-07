@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAME</title>
+  <meta name="description" content="黒猫千鶴のブラウザゲーム一覧。インストール不要で気軽に遊べます。">
+  <meta property="og:title" content="GAME - 黒猫千鶴">
+  <meta property="og:description" content="黒猫千鶴のブラウザゲーム一覧。インストール不要で気軽に遊べます。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kuroneko-kobo.com/game.html">
+  <meta property="og:image" content="https://kuroneko-kobo.com/img/hero/slide1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="680">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://kuroneko-kobo.com/game.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/subpage.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="game-page">
+  <header class="site-header"></header>
+
+  <section class="section">
+    <div class="section-inner">
+      <div>
+        <h2 class="section-title">
+          <span class="first-letter">G</span>AME
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- 一覧 -->
+      <div class="game-view is-active" id="game-list-view">
+        <p class="game-lead">ブラウザで開くだけで遊べるミニゲームです。カードを選ぶと詳細が表示されます。</p>
+        <div class="game-grid" id="game-list">
+          <!-- game-loader.jsで動的生成 -->
+        </div>
+      </div>
+
+      <!-- 詳細 -->
+      <div class="game-view" id="game-detail-view">
+        <div class="game-detail" id="game-detail">
+          <!-- game-loader.jsで動的生成 -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer"></footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/game-loader.js"></script>
+</body>
+</html>
