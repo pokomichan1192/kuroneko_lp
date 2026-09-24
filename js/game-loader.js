@@ -105,13 +105,25 @@ function renderGameDetail(container, game) {
     '</div>' +
     '<div class="game-blocks">' +
       renderBlock('こんな人に遊んでほしい', renderList(game.recommend, 'ul')) +
-      renderBlock('対応環境', renderList(game.devices, 'ul') + renderList(game.notes, 'ul')) +
+      renderBlock('対応環境', renderList(game.devices, 'ul')) +
       '<div class="game-block game-block-wide">' +
         '<h4 class="game-block-title">遊び方</h4>' +
         renderList(game.howto, 'ol') +
         (game.tips ? '<p class="game-block-tips">💡 ' + escapeHtml(game.tips) + '</p>' : '') +
       '</div>' +
+      renderBlock('その他', renderList(game.notes, 'ul')) +
+      renderBlock('更新内容', renderUpdates(game.updates)) +
     '</div>';
+}
+
+/**
+ * 更新内容（{date, text} の配列）を描画
+ */
+function renderUpdates(arr) {
+  if (!arr || !arr.length) return '';
+  return '<ul class="game-updates">' + arr.map(function (u) {
+    return '<li><span class="game-update-date">' + escapeHtml(u.date) + '</span>' + escapeHtml(u.text) + '</li>';
+  }).join('') + '</ul>';
 }
 
 function renderGameThumb(item) {

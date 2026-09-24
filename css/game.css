@@ -313,3 +313,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 更新内容 */
+.game-block .game-updates {
+  list-style: none;
+  padding-left: 0;
+}
+
+.game-update-date {
+  display: inline-block;
+  min-width: 6em;
+  font-weight: 700;
+  color: var(--color-primary);
+}
