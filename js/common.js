@@ -80,6 +80,7 @@ function insertFooter() {
             <li><a href="index.html#goods">GOODS</a></li>
             <li><a href="index.html#youtube">YOUTUBE</a></li>
             <li><a href="index.html#gallery">GALLERY</a></li>
+            <li><a href="game.html">GAME</a></li>
             <li><a href="index.html#contact">CONTACT</a></li>
           </ul>
         </div>
