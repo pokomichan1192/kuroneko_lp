@@ -29,6 +29,7 @@ function insertHeader() {
         <a href="index.html#goods">GOODS</a>
         <a href="index.html#youtube">YOUTUBE</a>
         <a href="index.html#gallery">GALLERY</a>
+        <a href="game.html">GAME</a>
         <a href="index.html#contact">CONTACT</a>
       </nav>
       <button class="hamburger" aria-label="メニューを開く">
@@ -44,6 +45,7 @@ function insertHeader() {
       <a href="index.html#goods">GOODS</a>
       <a href="index.html#youtube">YOUTUBE</a>
       <a href="index.html#gallery">GALLERY</a>
+      <a href="game.html">GAME</a>
       <a href="index.html#contact">CONTACT</a>
     </nav>
   `;

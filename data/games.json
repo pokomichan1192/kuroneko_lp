@@ -5,7 +5,7 @@
     "catch": "今夜も黒猫をつついてく？",
     "tags": ["ひとりで", "ミニゲーム"],
     "image": "img/games/kuroneko-tsutsuki.webp",
-    "link": "https://kuroneko-tsutsuki-next.cgybm6s6jz.chatgpt.site/",
+    "link": "https://kuroneko-tsutsuki.kuroneko-kobo.com/index.html",
     "description": [
       "月明かりに照らされた草むらから、ひょこっと現れる黒猫をやさしくつついて遊ぶミニゲームです。",
       "ブラウザで開くだけで、インストール不要。ちょっとしたすきま時間に気軽に遊べます。"
@@ -32,7 +32,7 @@
       "ゲームは外部サイトで開きます。"
     ],
     "updates": [
-      { "date": "2026.○.○", "text": "配信開始" }
+      { "date": "2026.10.05", "text": "配信開始" }
     ]
   }
 ]
