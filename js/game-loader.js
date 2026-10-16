@@ -131,7 +131,7 @@ function renderGameDetail(container, game) {
         (game.tips ? '<p class="game-block-tips">💡 ' + escapeHtml(game.tips) + '</p>' : '') +
       '</div>' +
       renderNoticesBlock(game.notices) +
-      renderBlock('更新内容', renderUpdates(game.updates)) +
+      renderWideBlock('更新内容', renderUpdates(game.updates)) +
     '</div>';
 }
 
@@ -194,6 +194,16 @@ function renderTags(tags) {
 
 function renderBlock(title, bodyHtml) {
   return '<div class="game-block">' +
+    '<h4 class="game-block-title">' + escapeHtml(title) + '</h4>' +
+    bodyHtml +
+  '</div>';
+}
+
+/**
+ * 全幅ブロックを描画（renderBlock の全幅版）
+ */
+function renderWideBlock(title, bodyHtml) {
+  return '<div class="game-block game-block-wide">' +
     '<h4 class="game-block-title">' + escapeHtml(title) + '</h4>' +
     bodyHtml +
   '</div>';
