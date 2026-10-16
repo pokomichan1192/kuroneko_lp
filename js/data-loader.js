@@ -187,12 +187,22 @@ function loadGallery() {
   fetch('data/gallery.json')
     .then(function (res) { return res.json(); })
     .then(function (data) {
-      var items = limit ? data.slice(0, limit) : data;
+      var visible = excludeComingSoon(data);
+      var items = limit ? visible.slice(0, limit) : visible;
       renderGallery(container, items);
     })
     .catch(function (err) {
       console.error('Gallery データの読み込みに失敗:', err);
     });
+}
+
+/**
+ * Coming Soon（画像パスに coming-soon を含む）項目を除外する
+ */
+function excludeComingSoon(items) {
+  return items.filter(function (item) {
+    return !(item.image && item.image.indexOf('coming-soon') !== -1);
+  });
 }
 
 function renderGallery(container, items) {
