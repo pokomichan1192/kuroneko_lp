@@ -111,9 +111,42 @@ function renderGameDetail(container, game) {
         renderList(game.howto, 'ol') +
         (game.tips ? '<p class="game-block-tips">💡 ' + escapeHtml(game.tips) + '</p>' : '') +
       '</div>' +
-      renderBlock('その他', renderList(game.notes, 'ul')) +
+      renderNoticesBlock(game.notices) +
       renderBlock('更新内容', renderUpdates(game.updates)) +
     '</div>';
+}
+
+/**
+ * 注意事項ブロック（{heading, items} の配列）を描画
+ * 内容が長いため全幅ブロックで表示する
+ */
+function renderNoticesBlock(notices) {
+  if (!notices || !notices.length) return '';
+  return '<div class="game-block game-block-wide game-notices">' +
+    '<h4 class="game-block-title">注意事項</h4>' +
+    notices.map(function (n) {
+      return '<div class="game-notice">' +
+        '<h5 class="game-notice-heading">' + escapeHtml(n.heading) + '</h5>' +
+        '<ul>' + (n.items || []).map(function (item) {
+          return '<li>' + renderNoticeItem(item) + '</li>';
+        }).join('') + '</ul>' +
+      '</div>';
+    }).join('') +
+  '</div>';
+}
+
+/**
+ * 注意事項の1項目を描画
+ * 文字列ならそのまま、{text, linkLabel, linkHref} なら linkLabel 部分をリンク化する
+ */
+function renderNoticeItem(item) {
+  if (typeof item === 'string') return escapeHtml(item);
+  if (!item || !item.text) return '';
+  var text = escapeHtml(item.text);
+  if (!item.linkLabel || !item.linkHref) return text;
+  var label = escapeHtml(item.linkLabel);
+  var link = '<a href="' + escapeHtml(item.linkHref) + '" class="game-notice-link">' + label + '</a>';
+  return text.replace(label, link);
 }
 
 /**

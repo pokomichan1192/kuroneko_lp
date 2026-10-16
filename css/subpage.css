@@ -169,6 +169,109 @@
 }
 
 /* ========================================
+   Privacy Page
+   ======================================== */
+.policy {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: var(--font-size-base);
+  line-height: 1.9;
+  color: var(--color-text);
+}
+
+.policy-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.policy-intro {
+  margin-bottom: var(--spacing-xl);
+}
+
+.policy-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.policy-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.policy-heading::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.policy-section p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.policy-section ul {
+  list-style: disc;
+  padding-left: 1.4em;
+  margin-bottom: var(--spacing-md);
+}
+
+.policy-section a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.policy-section a:hover {
+  color: var(--color-primary);
+}
+
+.policy-section .policy-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.policy-section .policy-links li {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-accent-bg);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.policy-section .policy-links li + li {
+  margin-top: var(--spacing-sm);
+}
+
+.policy-contact {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-xs) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.policy-contact dt {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.policy-dates {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  text-align: right;
+}
+
+/* ========================================
    Responsive - Subpage
    ======================================== */
 @media (max-width: 1024px) {
@@ -196,6 +299,15 @@
 
   .novel-link-item {
     padding: 12px;
+  }
+
+  .policy-contact {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .policy-contact dd {
+    margin-bottom: var(--spacing-sm);
   }
 }
 

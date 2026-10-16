@@ -82,6 +82,7 @@ function insertFooter() {
             <li><a href="index.html#gallery">GALLERY</a></li>
             <li><a href="game.html">GAME</a></li>
             <li><a href="index.html#contact">CONTACT</a></li>
+            <li><a href="privacy.html">PRIVACY POLICY</a></li>
           </ul>
         </div>
         <div class="footer-center">
