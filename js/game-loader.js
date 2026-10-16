@@ -38,6 +38,7 @@ function renderGameView() {
   var game = id ? findGameById(id) : null;
 
   if (game) {
+    if (redirectToGamePage(game)) return;
     renderGameDetail(document.getElementById('game-detail'), game);
     listView.classList.remove('is-active');
     detailView.classList.add('is-active');
@@ -62,6 +63,24 @@ function findGameById(id) {
 }
 
 /**
+ * 独立ページ（page）を持つゲームなら、そのページへ転送する
+ * 旧URL（game.html#game-id）との互換用。転送したら true を返す
+ */
+function redirectToGamePage(game) {
+  if (!game || !game.page) return false;
+  window.location.replace(game.page);
+  return true;
+}
+
+/**
+ * 一覧カードのリンク先（独立ページがあればそのURL、なければハッシュ）
+ */
+function getGameCardHref(item) {
+  if (item.page) return escapeHtml(item.page);
+  return '#' + encodeURIComponent(item.id);
+}
+
+/**
  * 一覧（カード）を描画
  */
 function renderGameList(container, items) {
@@ -71,7 +90,7 @@ function renderGameList(container, items) {
     return;
   }
   container.innerHTML = items.map(function (item) {
-    return '<a href="#' + encodeURIComponent(item.id) + '" class="game-card">' +
+    return '<a href="' + getGameCardHref(item) + '" class="game-card">' +
       renderGameThumb(item) +
       '<div class="game-card-info">' +
         renderTags(item.tags) +
