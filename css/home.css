@@ -244,9 +244,18 @@
   margin-top: var(--spacing-md);
 }
 
+/* スマホのみ改行（PCでは非表示） */
+.about-br-sp {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .about-title {
     font-size: 28px;
+  }
+
+  .about-br-sp {
+    display: inline;
   }
 }
 

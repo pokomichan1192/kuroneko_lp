@@ -373,12 +373,36 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-md) var(--spacing-lg);
+  gap: var(--spacing-sm) var(--spacing-lg); /* 行間はPCで注記がボタン直下に来る従来の間隔 */
   margin-top: var(--spacing-lg);
 }
 
 .btn-play-row .btn-play {
   margin-top: 0;
+}
+
+/* 注記は行内で全幅にして、PCではボタンの下に出す */
+.btn-play-row .btn-play-note {
+  flex-basis: 100%;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .btn-play-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  /* スマホ: ボタン → 注記 → リンク の順 */
+  .btn-play-row .btn-play-note {
+    order: 2;
+  }
+
+  .btn-play-row .btn-play-links {
+    order: 3;
+    margin-top: var(--spacing-xs);
+  }
 }
 
 .btn-play-links {
