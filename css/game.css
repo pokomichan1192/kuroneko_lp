@@ -14,7 +14,22 @@
   font-size: var(--font-size-base);
   color: var(--color-text-light);
   line-height: 1.8;
+  margin-bottom: var(--spacing-sm);
+}
+
+.game-lead-links {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-xl);
+}
+
+.game-lead-links a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.game-lead-links a:hover {
+  color: var(--color-primary);
 }
 
 /* --- List (Card Grid) --- */
@@ -350,5 +365,32 @@
 }
 
 .game-notice-link:hover {
+  color: var(--color-primary);
+}
+
+/* 遊ぶボタン横のテキストリンク */
+.btn-play-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md) var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.btn-play-row .btn-play {
+  margin-top: 0;
+}
+
+.btn-play-links {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.btn-play-links a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.btn-play-links a:hover {
   color: var(--color-primary);
 }

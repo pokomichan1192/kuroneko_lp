@@ -24,6 +24,7 @@ function insertHeader() {
         <span class="header-logo-subtitle">~ KURONEKO CHIZURU ~</span>
       </a>
       <nav class="header-nav">
+        <a href="index.html#about">ABOUT</a>
         <a href="index.html#topics">TOPICS</a>
         <a href="index.html#works">WORKS</a>
         <a href="index.html#goods">GOODS</a>
@@ -40,6 +41,7 @@ function insertHeader() {
     </div>
     <div class="mobile-nav-overlay"></div>
     <nav class="mobile-nav">
+      <a href="index.html#about">ABOUT</a>
       <a href="index.html#topics">TOPICS</a>
       <a href="index.html#works">WORKS</a>
       <a href="index.html#goods">GOODS</a>
@@ -75,6 +77,7 @@ function insertFooter() {
       <div class="footer-top">
         <div class="footer-menu">
           <ul class="footer-menu-list">
+            <li><a href="index.html#about">ABOUT</a></li>
             <li><a href="index.html#topics">TOPICS</a></li>
             <li><a href="index.html#works">WORKS</a></li>
             <li><a href="index.html#goods">GOODS</a></li>

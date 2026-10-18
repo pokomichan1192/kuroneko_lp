@@ -262,6 +262,19 @@
   color: var(--color-primary);
 }
 
+.policy-back {
+  margin-top: var(--spacing-2xl);
+  font-size: var(--font-size-sm);
+}
+
+.policy-back a {
+  color: var(--color-text-light);
+}
+
+.policy-back a:hover {
+  color: var(--color-accent);
+}
+
 .policy-dates {
   margin-top: var(--spacing-2xl);
   padding-top: var(--spacing-md);

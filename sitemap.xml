@@ -32,4 +32,12 @@
     <loc>https://kuroneko-kobo.com/privacy.html</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://kuroneko-kobo.com/game-kuroneko-tsutsuki-notes.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://kuroneko-kobo.com/terms.html</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>
