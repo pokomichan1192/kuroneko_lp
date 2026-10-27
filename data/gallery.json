@@ -10,34 +10,14 @@
     "category": "illust"
   },
   {
-    "image": "img/gallery/coming-soon.png",
+    "image": "img/gallery/illust3.png",
     "label": "イラスト3",
     "category": "illust"
-  },
-  {
-    "image": "img/gallery/coming-soon.png",
-    "label": "GAME1",
-    "category": "game"
-  },
-  {
-    "image": "img/gallery/coming-soon.png",
-    "label": "GAME2",
-    "category": "game"
   },
   {
     "image": "img/gallery/text1.png",
     "label": "TEXT1",
     "category": "text",
     "link": "novel.html"
-  },
-  {
-    "image": "img/gallery/coming-soon.png",
-    "label": "TEXT2",
-    "category": "text"
-  },
-  {
-    "image": "img/gallery/coming-soon.png",
-    "label": "TEXT3",
-    "category": "text"
   }
 ]
