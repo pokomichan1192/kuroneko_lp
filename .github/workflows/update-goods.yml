@@ -1,11 +1,9 @@
 name: Update GOODS Data
 
 on:
-  schedule:
-    # 毎日朝9時（日本時間）に実行 = UTC 0:00
-    - cron: '0 0 * * *'
+  # 定期実行は停止中（SUZURI が自動アクセスを拒否するため。goods.json は手動更新）
   workflow_dispatch:
-    # 手動実行も可能
+    # 手動実行のみ可能
 
 jobs:
   update-goods:
