@@ -104,7 +104,13 @@ jobs:
 
           print(json.dumps({'items': items, 'downloads': downloads, 'date_fetch': date_fetch}, ensure_ascii=False))
           PYEOF
-          echo "Products found: $(python3 -c "import json; d=json.load(open('/tmp/goods_result.json')); print(len(d['items']))")"
+          COUNT=$(python3 -c "import json; d=json.load(open('/tmp/goods_result.json')); print(len(d['items']))")
+          echo "Products found: $COUNT"
+          # 0件の場合は goods.json を上書きせず、失敗として終了する
+          if [ "$COUNT" = "0" ] || [ -z "$COUNT" ]; then
+            echo "::error::商品が0件のため goods.json を更新せず終了します（取得失敗の可能性）"
+            exit 1
+          fi
 
       - name: Download images
         run: |

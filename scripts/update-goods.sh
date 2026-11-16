@@ -95,6 +95,13 @@ for block in blocks[1:]:
 print(json.dumps({'items': items, 'downloads': downloads, 'date_fetch': date_fetch}, ensure_ascii=False))
 PYEOF
 
+# 0件の場合は goods.json を上書きせず終了する（取得失敗の可能性）
+COUNT=$(python3 -c "import json; d=json.load(open('/tmp/goods_result.json')); print(len(d['items']))" 2>/dev/null)
+if [ "$COUNT" = "0" ] || [ -z "$COUNT" ]; then
+    echo "エラー: 商品が0件のため goods.json を更新せず終了します"
+    exit 1
+fi
+
 # JSONからダウンロードリストを取得してcurlで画像をダウンロード
 echo ""
 echo "画像をダウンロード中..."
