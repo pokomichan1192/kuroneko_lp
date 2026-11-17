@@ -939,3 +939,18 @@
     font-size: 11px;
   }
 }
+
+/* ========================================
+   Hero: スマホ・タブレットでは画像比率(1200x680)に合わせて全体を表示
+   ======================================== */
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    padding: 44px 0 36px;
+  }
+
+  .carousel-slide {
+    height: auto;
+    aspect-ratio: 1200 / 680;
+  }
+}
