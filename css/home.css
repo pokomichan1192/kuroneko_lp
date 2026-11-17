@@ -941,16 +941,22 @@
 }
 
 /* ========================================
-   Hero: スマホ・タブレットでは画像比率(1200x680)に合わせて全体を表示
+   Hero: 全画面幅で画像比率(1200x680)に合わせて全体を表示
    ======================================== */
-@media (max-width: 768px) {
-  .hero-section {
-    height: auto;
-    padding: 44px 0 36px;
-  }
+.hero-section {
+  height: auto;
+  padding: 44px 0 36px;
+}
 
+.carousel-slide {
+  height: auto;
+  aspect-ratio: 1200 / 680;
+}
+
+/* 大画面では画像の原寸幅(1200px)を上限にする */
+@media (min-width: 1715px) {
   .carousel-slide {
-    height: auto;
-    aspect-ratio: 1200 / 680;
+    min-width: 1200px;
+    max-width: 1200px;
   }
 }
