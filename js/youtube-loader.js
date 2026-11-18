@@ -5,7 +5,7 @@
  */
 
 var YOUTUBE_CONFIG = {
-  apiKey: 'AIzaSyAMVCJuzQUTb0oJpJd1mL7kidDpK0lV1R8',
+  apiKey: 'AIzaSyDs3eexNzqdbZP8koW-M_zoE0Ok4m-NXmU',
   channelId: 'UC8wrPmR-fklVWah2jF9Zx_w',
   cacheKey: 'kuroneko_youtube_cache',
   cacheDuration: 60 * 60 * 1000 // 1時間
